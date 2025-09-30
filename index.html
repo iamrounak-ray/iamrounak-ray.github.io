@@ -13,55 +13,71 @@
       margin: 0;
       padding: 0;
     }
-    .container {
-      max-width: 700px;
-      margin: 40px auto 20px auto;
+    .top-image-container {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+    }
+    .top-image {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+    .site-title {
+      position: absolute;
+      top: 22px;
+      left: 27px;
+      font-size: 2.1em;
+      font-weight: 700;
+      color: #e9f6ff;
+      background: rgba(49, 116, 173, 0.6);
+      padding: 6px 14px;
+      border-radius: 6px;
+      letter-spacing: 1px;
+      z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .main-content {
+      display: flex;
+      max-width: 1050px;
+      margin: 32px auto 16px auto;
       background: #fff;
-      padding: 36px 26px;
-      box-shadow: 0 6px 30px rgba(0,0,0,0.07), 0 1.5px 4px rgba(0,0,0,0.04);
       border-radius: 12px;
+      box-shadow: 0 4px 22px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
+      padding: 0;
+    }
+    .left-pane {
+      width: 25%;
+      min-width: 180px;
+      background: #f9f9fd;
+      border-right: 1px solid #e2e7ef;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 54px;
     }
     .profile-photo {
-      display: block;
-      margin: 0 auto 24px auto;
-      width: 180px;
-      height: 180px;
+      width: 160px;
+      height: 160px;
       object-fit: cover;
       border-radius: 50%;
       border: 2px solid #3174ad;
       background-color: #eee;
+      box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    }
+    .right-pane {
+      width: 75%;
+      padding: 46px 34px 38px 34px;
     }
     h1 {
-      font-size: 2.3em;
-      margin-bottom: 0.15em;
-      font-weight: 700;
-      color: #003366;
-      letter-spacing: 1px;
-      text-align: center;
-    }
-    h2 {
-      font-size: 1.4em;
-      margin-top: 2em;
-      color: #3174ad;
+      display: none;
     }
     p {
       font-size: 1.13em;
       line-height: 1.7em;
-      margin-bottom: 1.2em;
-    }
-    .cv-link {
-      display: inline-block;
-      margin: 10px 0 18px 0;
-      padding: 9px 18px;
-      background-color: #3174ad;
-      color: #fff;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 700;
-      transition: background 0.18s;
-    }
-    .cv-link:hover {
-      background-color: #205988;
+      margin-bottom: 1.4em;
     }
     .footer {
       text-align: center;
@@ -69,40 +85,64 @@
       font-size: 1em;
       margin: 25px 0 0 0;
     }
-    @media (max-width: 600px) {
-      .container {
-        padding: 20px 8px;
+    @media (max-width: 800px) {
+      .main-content {
+        flex-direction: column;
+        max-width: 98vw;
+      }
+      .left-pane, .right-pane {
+        width: 100%;
+        min-width: 0;
+        max-width: 100vw;
+        padding-top: 18px;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      .right-pane {
+        padding: 18px 10px 26px 10px;
       }
       .profile-photo {
-        width: 95px;
-        height: 95px;
+        margin-bottom: 18px;
+        width: 110px;
+        height: 110px;
       }
-      h1 {
-        font-size: 1.4em;
+      .site-title {
+        font-size: 1.3em;
+        left: 8px;
+        top: 8px;
+        padding: 4px 8px;
       }
-      h2 {
-        font-size: 1.1em;
+      .top-image-container, .top-image {
+        height: 140px;
+        min-height: 100px;
       }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Replace 'profile.jpg' with the actual filename of your photo in the repo -->
-    <img src="dp1.jpg" alt="Rounak Ray Profile Photo" class="profile-photo">
-
-    <h1>Rounak Ray</h1>
-    <p>
-      Hello! I am currently a postdoctoral research fellow at the Simons Laufer Mathematical Sciences Institute (formerly MSRI). Prior to this, I completed my PhD in Probability theory from Eindhoven University of Technology, under the supervision of Prof. Remco van der Hofstad and Dr. Rajat Subhra Hazra. My doctoral thesis is titled "Stochastic Processes on Preferential Attachment Models".
-    </p>
-    <p>
-      I am working on Random Graphs. Besides this, my area of interests are Stochastic Process, Random Interfaces, Random Walks, Statistical Physics and Applied Probability Theory.
-    <p>
-      Here is something other than my academics. I love to play table tennis, chess, football (though I am terribly bad at this). I like to read storybooks and comics. Here I am a bit choosy. Regarding the books based on society, I like to read those in Bengali as I can relate them to my surroundings which I have seen since my childhood. And whenever I can't relate it, I loose interest in reading it. And I love travelling. I want to see the whole world. I am a foodie also. I like to taste the special food items of every place I visit.
-    </p>
-
-    <div class="footer">
-      &copy; 2025 Rounak Ray
+  <!-- Top welcome image and site title overlay -->
+  <div class="top-image-container">
+    <img src="welcome.jpg" alt="Welcome" class="top-image">
+    <div class="site-title">Rounak Ray</div>
+  </div>
+  <!-- Main split layout -->
+  <div class="main-content">
+    <div class="left-pane">
+      <img src="dp1.jpg" alt="Profile photo" class="profile-photo">
+    </div>
+    <div class="right-pane">
+      <p>
+        Hello! I am currently a postdoctoral research fellow at the Division of Applied Mathematics, Brown University, in the group of Prof. Kavita Ramanan. Prior to this, I completed my PhD in Probability theory from Eindhoven University of Technology, under the supervision of Prof. Remco van der Hofstad and Dr. Rajat Subhra Hazra. My doctoral thesis is titled "Stochastic Processes on Preferential Attachment Models".
+      </p>
+      <p>
+        I am working on Interacting particle systems on random graphs. Besides this, my area of interests are Stochastic process, Interacting particle systems, Random interfaces, Random walks, Statistical physics.
+      </p>
+      <p>
+        Here is something other than my academics. I love to play table tennis, chess, football (though I am terribly bad at this).  I like to read storybooks and comics. Here I am a bit choosy. Regarding the books based on society, I like to read those in Bengali as I can relate them to my surroundings which I have seen since my childhood. And whenever I can't relate it, I loose interest in reading it.  And I love travelling. I want to see the whole world. I am a foodie also. I like to taste the special food items of every place I visit. 
+      </p>
+      <div class="footer">
+        &copy; 2025 Rounak Ray
+      </div>
     </div>
   </div>
 </body>
