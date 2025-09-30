@@ -1,72 +1,167 @@
-/* General body styling */
+/* General body and html styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-family: Comfortaa, Arial, sans-serif;
+    color: #232323;
+    overflow-x: hidden;
+}
+
+/* Fullscreen background image for body */
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f9f9f9;
-    color: #333;
+    background: url('welcome.jpg') no-repeat center center fixed;
+    background-size: cover;
 }
 
-/* Navigation styling */
-nav {
-    background-color: #004080;
-    padding: 10px 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+/* Site title on top left */
+.site-title {
+    position: fixed;
+    top: 25px;
+    left: 30px;
+    font-size: 2.4em;
+    font-weight: 700;
+    color: #e9f6ff;
+    text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.65);
+    user-select: none;
+    z-index: 10;
+    letter-spacing: 1px;
 }
 
-nav ul {
-    list-style: none;
-    margin: 0;
+/* Main content container */
+.main-content {
+    display: flex;
+    max-width: 1050px;
+    margin: 100vh auto 32px auto;
+    background: url('home-back.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
     padding: 0;
+    min-height: 380px;
+    position: relative;
+    z-index: 5;
+}
+
+/* Highlight text style */
+.highlight {
+    font-size: 1.1em;
+    color: #ec327c;
+    font-weight: 600;
+}
+
+/* Left pane */
+.left-pane {
+    width: 25%;
+    min-width: 180px;
+    background: rgba(249, 249, 253, 0.85);
+    border-right: 1px solid #e2e7ef;
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    padding-top: 54px;
+    border-radius: 12px 0 0 12px;
 }
 
-nav ul li {
-    margin: 0 20px;
+/* Profile photo */
+.profile-photo {
+    width: 208px;
+    height: 208px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
-nav ul li a {
-    color: white;
+/* Right pane */
+.right-pane {
+    width: 75%;
+    padding: 46px 34px 38px 34px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 0 12px 12px 0;
+    overflow-wrap: break-word;
+}
+
+p {
+    font-size: 1.13em;
+    line-height: 1.7em;
+    margin-bottom: 1.4em;
+}
+
+/* Link styles */
+.link {
+    color: #93C572;
+    font-size: 1.1em;
+    font-weight: 600;
     text-decoration: none;
-    font-weight: bold;
-    font-size: 16px;
-    padding: 8px 12px;
-    border-radius: 4px;
-    transition: background-color 0.3s ease;
 }
 
-nav ul li a:hover {
-    background-color: #003366;
+.link:hover {
+    text-decoration: underline;
 }
 
-nav ul li a.active {
-    background-color: #0073e6;
+/* Footer styles */
+.footer {
+    text-align: center;
+    color: #464646;
+    font-size: 1em;
+    margin: 25px 0 0 0;
 }
 
-/* Main content styling */
-main {
-    max-width: 900px;
-    margin: 30px auto;
-    padding: 0 20px;
-    background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    border-radius: 6px;
+/* Responsive design */
+@media(max-width: 800px) {
+    .main-content {
+        flex-direction: column;
+        max-width: 98vw;
+        margin-top: 440px;
+        background: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .left-pane, .right-pane {
+        width: 100%;
+        min-width: 0;
+        max-width: 100vw;
+        padding-top: 18px;
+        padding-left: 0;
+        padding-right: 0;
+        border-radius: 0;
+        background: none;
+    }
+    .right-pane {
+        padding: 18px 10px 26px 10px;
+    }
+    .profile-photo {
+        margin-top: 100px;
+        width: 110px;
+        height: 110px;
+    }
+    .site-title {
+        font-size: 1.6em;
+        left: 12px;
+        top: 12px;
+    }
 }
 
-h1 {
-    color: #004080;
+/* New styles for top right page links */
+.top-right-links {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    font-family: Comfortaa, Arial, sans-serif;
+    font-size: 1.1em;
+    color: #e9f6ff;
+    user-select: none;
+    z-index: 10;
+    letter-spacing: 1px;
 }
 
-p, ul {
-    line-height: 1.6;
-    font-size: 16px;
+.top-right-links a {
+    color: #e9f6ff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 700;
 }
 
-ul {
-    padding-left: 20px;
-}
-
-ul li {
-    margin-bottom: 8px;
+.top-right-links a:hover {
+    text-decoration: underline;
 }
