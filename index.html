@@ -3,137 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <title>Rounak Ray</title>
+  <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
-  <style>
-    html, body {
-      margin: 0; padding: 0; height: 100%; width: 100%;
-      font-family: 'Comfortaa', Arial, sans-serif;
-      color: #232323;
-      overflow-x: hidden;
-    }
-    body {
-      /* Fullscreen background image */
-      background: url('welcome.jpg') no-repeat center center fixed;
-      background-size: cover;
-    }
-    .site-title {
-      position: fixed;
-      top: 25px;
-      left: 30px;
-      font-size: 2.4em;
-      font-weight: 700;
-      color: #e9f6ff;
-      text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.65);
-      user-select: none;
-      z-index: 10;
-      letter-spacing: 1px;
-    }
-    .main-content {
-      display: flex;
-      max-width: 1050px;
-      margin: 100vh auto 32px auto; /* updated: lowered content below fullscreen background */
-      background: url('home-back.jpg') no-repeat center center;
-      background-size: cover;
-      border-radius: 12px;
-      box-shadow: 0 4px 22px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
-      padding: 0;
-      min-height: 380px;
-      position: relative;
-      z-index: 5;
-    }
-    .highlight {
-      font-size: 1.1em;
-      color: #ec327c; /* example color */
-      font-weight: 600;
-    }
-    .left-pane {
-      width: 25%;
-      min-width: 180px;
-      background: rgba(249, 249, 253, 0.85);
-      border-right: 1px solid #e2e7ef;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding-top: 54px;
-      border-radius: 12px 0 0 12px;
-    }
-    .profile-photo {
-      width: 208px; /* 160px × 1.3 */
-      height: 208px; /* 160px × 1.3 */
-      object-fit: cover;
-      border-radius: 50%;
-      border: 2px solid #3174ad;
-      background-color: #eee;
-      box-shadow: 0 2px 12px rgba(0,0,0,.07);
-      margin-top: 60px; /* keeps the downward spacing */
-    }
-
-    .right-pane {
-      width: 75%;
-      padding: 46px 34px 38px 34px;
-      background: rgba(255,255,255,0.85);
-      border-radius: 0 12px 12px 0;
-      overflow-wrap: break-word;
-    }
-    p {
-      font-size: 1.13em;
-      line-height: 1.7em;
-      margin-bottom: 1.4em;
-    }
-    .link {
-      color: #93C572;
-      font-size: 1.1em;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .link:hover {
-      text-decoration: underline;
-    }
-    .footer {
-      text-align: center;
-      color: #464646;
-      font-size: 1em;
-      margin: 25px 0 0 0;
-    }
-    @media (max-width:800px){
-      .main-content {
-        flex-direction: column;
-        max-width: 98vw;
-        margin-top: 440px;
-        background: none;
-        box-shadow: none;
-        border-radius: 0;
-      }
-      .left-pane, .right-pane {
-        width: 100%;
-        min-width: 0;
-        max-width: 100vw;
-        padding-top: 18px;
-        padding-left: 0;
-        padding-right: 0;
-        border-radius: 0;
-        background: none;
-      }
-      .right-pane {
-        padding: 18px 10px 26px 10px;
-      }
-      .profile-photo {
-        margin-top: 100px; /* adjust this value as needed */
-        width: 110px;
-        height: 110px;
-      }
-      .site-title {
-        font-size: 1.6em;
-        left: 12px;
-        top: 12px;
-      }
-    }
-  </style>
 </head>
 <body>
   <div class="site-title">Rounak Ray</div>
+  <div class="top-right-links">
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a href="hobby.html">Hobby</a>
+    <a href="cv.html">CV</a>
+  </div>
+
   <!-- Main split layout -->
   <div class="main-content">
     <div class="left-pane">
