@@ -28,7 +28,7 @@ body {
 
 .main-content {
     display: flex;
-    max-width: 1050px;
+    max-width: 95vw; /* allows full width on small screens */
     margin: 100vh auto 32px auto;
     background: url('home-back.jpg') no-repeat center center;
     background-size: cover;
@@ -67,6 +67,14 @@ body {
 
 .right-pane {
     width: 75%;
+    padding: 46px 34px 38px 34px;
+    background: rgba(255,255,255,0.85);
+    border-radius: 0 12px 12px 0;
+    overflow-wrap: break-word;
+}
+
+.research-pane {
+    width: 90%;
     padding: 46px 34px 38px 34px;
     background: rgba(255,255,255,0.85);
     border-radius: 0 12px 12px 0;
