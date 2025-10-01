@@ -28,7 +28,7 @@ body {
 
 .main-content {
     display: flex;
-    max-width: 95vw; /* allows full width on small screens */
+    max-width: 85vw; /* allows full width on small screens */
     margin: 100vh auto 32px auto;
     background: url('home-back.jpg') no-repeat center center;
     background-size: cover;
@@ -38,6 +38,22 @@ body {
     min-height: 380px;
     position: relative;
     z-index: 5;
+}
+
+.research-content {
+    display: flex;
+    justify-content: center;
+    max-width: 95vw; /* allows full width on small screens */
+    width: 100%;
+    margin: 100vh auto 32px auto;
+    background: url('home-back.jpg') no-repeat center center;
+    background-size: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 22px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
+    padding: 2rem 0;
+    position: relative;
+    z-index: 5;
+    box-sizing: border-box;
 }
 
 .highlight {
