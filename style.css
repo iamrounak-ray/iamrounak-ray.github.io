@@ -1,4 +1,3 @@
-/* Original styles remain unchanged */
 html, body {
     margin: 0;
     padding: 0;
@@ -157,12 +156,12 @@ p {
     }
 }
 
-/* New research container styles to use 85% width and clean dropdowns */
+/* research page container with opaque background */
 .research-container {
     width: 85vw;
     max-width: 85vw;
     margin: 32px auto;
-    background: rgba(255, 255, 255);
+    background: #fff;  /* Fully opaque white */
     padding: 1.5rem 2rem;
     border-radius: 12px;
     box-sizing: border-box;
