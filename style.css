@@ -1,3 +1,4 @@
+/* Original styles remain unchanged */
 html, body {
     margin: 0;
     padding: 0;
@@ -20,40 +21,48 @@ body {
     font-size: 2.4em;
     font-weight: 700;
     color: #e9f6ff;
-    text-shadow: 1px 1px 7px rgba(0,0,0,0.65);
+    text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.65);
     user-select: none;
     z-index: 10;
     letter-spacing: 1px;
 }
 
-.main-content {
-    display: flex;
-    max-width: 85vw; /* allows full width on small screens */
-    margin: 100vh auto 32px auto;
-    background: url('home-back.jpg') no-repeat center center;
-    background-size: cover;
-    border-radius: 12px;
-    box-shadow: 0 4px 22px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
-    padding: 0;
-    min-height: 380px;
-    position: relative;
-    z-index: 5;
+.top-right-links {
+    position: fixed;
+    top: 25px;
+    right: 30px;
+    font-family: Comfortaa, Arial, sans-serif;
+    font-size: 1.1em;
+    color: #e9f6ff;
+    user-select: none;
+    z-index: 10;
+    letter-spacing: 1px;
 }
 
-.research-content {
+.top-right-links a {
+    color: #e9f6ff;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 700;
+}
+
+.top-right-links a:hover {
+    text-decoration: underline;
+}
+
+.main-content {
     display: flex;
-    justify-content: center;
-    max-width: 95vw; /* allows full width on small screens */
-    width: 100%;
+    max-width: 1050px;
     margin: 100vh auto 32px auto;
     background: url('home-back.jpg') no-repeat center center;
     background-size: cover;
     border-radius: 12px;
-    box-shadow: 0 4px 22px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.03);
+    box-shadow: 0 4px 22px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
     padding: 0;
+    min-height: 380px;
     position: relative;
     z-index: 5;
-    min-height: 380px;
+    box-sizing: border-box;
 }
 
 .highlight {
@@ -65,7 +74,7 @@ body {
 .left-pane {
     width: 25%;
     min-width: 180px;
-    background: rgba(249,249,253,0.85);
+    background: rgba(249, 249, 253, 0.85);
     border-right: 1px solid #e2e7ef;
     display: flex;
     justify-content: center;
@@ -84,18 +93,10 @@ body {
 .right-pane {
     width: 75%;
     padding: 46px 34px 38px 34px;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 0 12px 12px 0;
     overflow-wrap: break-word;
-}
-
-.research-pane {
-    width: 90%;
-    padding: 46px 34px 38px 34px;
-    background: rgba(255,255,255,0.85);
-    border-radius: 0 12px 12px 0;
-    overflow-wrap: break-word;
-    margin: 0 auto; /* center horizontally */
+    box-sizing: border-box;
 }
 
 p {
@@ -156,60 +157,44 @@ p {
     }
 }
 
-.top-right-links {
-    position: fixed;
-    top: 25px;
-    right: 30px;
-    font-family: Comfortaa, Arial, sans-serif;
-    font-size: 1.1em;
-    color: #e9f6ff;
-    user-select: none;
-    z-index: 10;
-    letter-spacing: 1px;
+/* New research container styles to use 85% width and clean dropdowns */
+.research-container {
+    width: 85vw;
+    max-width: 85vw;
+    margin: 32px auto;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    box-sizing: border-box;
 }
 
-.top-right-links a {
-    color: #e9f6ff;
-    text-decoration: none;
-    margin-left: 20px;
-    font-weight: 700;
-}
-
-.top-right-links a:hover {
-    text-decoration: underline;
-}
-
-.dropdown-section {
-    width: 100%;
-    max-width: 700px;
-    margin: 30px auto 0 auto;
-}
-
-details {
+.research-container details {
     background: none;
     border-radius: 0;
+    margin-bottom: 14px;
     box-shadow: none;
     padding: 0.1em 0.3em;
     font-size: 1.07em;
-    margin-bottom: 14px;
 }
-summary {
+
+.research-container summary {
     cursor: pointer;
     font-weight: 600;
-    font-size: 1.0em;
+    font-size: 1.10em;
     padding: 0.16em 0;
     color: #004080;
     outline: none;
 }
-ol.article-list {
+
+.research-container details[open] {
+    background: transparent;
+}
+
+.research-container ol.article-list {
     margin: 0.7em 0 0 1.3em;
     padding: 0;
 }
-ol.article-list li {
+
+.research-container ol.article-list li {
     margin-bottom: 0.5em;
-}
-
-
-ul.article-list li {
-    margin-bottom: 0.7em;
 }
