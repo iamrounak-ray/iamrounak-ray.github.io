@@ -79,6 +79,7 @@ body {
     background: rgba(255,255,255,0.85);
     border-radius: 0 12px 12px 0;
     overflow-wrap: break-word;
+    margin: 0 auto; /* center horizontally */
 }
 
 p {
