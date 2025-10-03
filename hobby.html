@@ -34,7 +34,8 @@
     .carousel-slide img {
       width: 100%;
       height: 350px;           /* Adjust height for image */
-      object-fit: cover;
+      width: auto;         /* Width auto to keep aspect ratio */
+      object-fit: contain; /* Keep full image in view, no cropping */
       object-position: center;
       display: block;
       margin: 0 auto;
