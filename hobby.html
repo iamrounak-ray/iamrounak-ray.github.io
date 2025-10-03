@@ -12,35 +12,43 @@
         background: url('hobby.jpg') no-repeat center center fixed;
         background-size: cover;
     }
-    .gallery-section { margin-bottom: 40px; }
-    .gallery-title { font-size: 1.5em; margin-bottom: 10px; }
-    .gallery { display: flex; flex-wrap: wrap; }
-    .gallery-item { margin: 5px; border: 1px solid #ccc; width: 180px; }
-    .gallery-item img { width: 100%; height: auto; }
-    .gallery-item .desc { text-align: center; padding: 5px; }
+   .carousel-container {
+      width: 600px;
+      margin: auto;
+      position: relative;
+    }
+    .carousel-slide {
+      display: none;
+      width: 100%;
+    }
+    .active {
+      display: block;
+    }
 </style>
 </head>
   <body>
-    <div class="site-title">Rounak Ray</div>
-    <div class="top-right-links">
-      <a href="index.html">Home</a>
-      <a href="research.html">Research</a>
-      <a href="hobby.html">Hobby</a>
-      <a href="cv.html">CV</a>
-    </div>
-    <div class="gallery-section">
-    <div class="gallery-title">Norway Trip</div>
-    <div class="gallery">
-      <div class="gallery-item">
-        <img src="Norway/nor1.jpg" alt="Nature 1">
-        <div class="desc">Dancing aurora</div>
-      </div>
-      <div class="gallery-item">
-        <img src="Norway/nor2.jpg" alt="Nature 2">
-        <div class="desc">Milky Way</div>
-      </div>
-      <!-- Add more images -->
-    </div>
+    <div class="main-content">
+    <div class="carousel-container">
+    <img class="carousel-slide active" src="Norway/nor1.jpg" alt="Dancing Aurora">
+    <img class="carousel-slide" src="Norway/nor2.jpg" alt="Milky Way">
+    <img class="carousel-slide" src="Norway/nor3.jpg" alt="No (Sun)-rise">
+    <!-- Add more images as needed -->
   </div>
+  </div>
+  <script>
+    let index = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    function showSlide(i) {
+      slides.forEach((slide, idx) => {
+        slide.classList.remove('active');
+        if (idx === i) slide.classList.add('active');
+      });
+    }
+    function nextSlide() {
+      index = (index + 1) % slides.length;
+      showSlide(index);
+    }
+    setInterval(nextSlide, 5000); // Change every 5 seconds
+  </script>
   </body>
 </html>
