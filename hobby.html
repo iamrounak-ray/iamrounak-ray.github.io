@@ -12,13 +12,35 @@
         background: url('hobby.jpg') no-repeat center center fixed;
         background-size: cover;
     }
+    .gallery-section { margin-bottom: 40px; }
+    .gallery-title { font-size: 1.5em; margin-bottom: 10px; }
+    .gallery { display: flex; flex-wrap: wrap; }
+    .gallery-item { margin: 5px; border: 1px solid #ccc; width: 180px; }
+    .gallery-item img { width: 100%; height: auto; }
+    .gallery-item .desc { text-align: center; padding: 5px; }
 </style>
 </head>
-<body>
-  <div class="site-title">Rounak Ray</div>
-  <div class="top-right-links">
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a href="hobby.html">Hobby</a>
-    <a href="cv.html">CV</a>
+  <body>
+    <div class="site-title">Rounak Ray</div>
+    <div class="top-right-links">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="hobby.html">Hobby</a>
+      <a href="cv.html">CV</a>
+    </div>
+    <div class="gallery-section">
+    <div class="gallery-title">Norway Trip</div>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="Norway/nor1.jpg" alt="Nature 1">
+        <div class="desc">Dancing aurora</div>
+      </div>
+      <div class="gallery-item">
+        <img src="Norway/nor2.jpg" alt="Nature 2">
+        <div class="desc">Milky Way</div>
+      </div>
+      <!-- Add more images -->
+    </div>
   </div>
+  </body>
+</html>
