@@ -17,23 +17,61 @@
       margin: auto;
       position: relative;
     }
+
     .carousel-slide {
       display: none;
+      height: 400px;           /* Fixed height */
       width: 100%;
+      object-fit: cover;
+      object-position: center;
+      text-align: center;      /* Center caption text */
     }
-    .active {
+
+    .carousel-slide.active {
       display: block;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 350px;           /* Adjust height for image */
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .caption {
+      font-size: 1em;
+      padding: 8px 0;
+      color: #333;
     }
 </style>
 </head>
   <body>
-    <div class="main-content">
+    <div class="site-title">Rounak Ray</div>
+    <div class="top-right-links">
+      <a href="index.html">Home</a>
+      <a href="research.html">Research</a>
+      <a href="hobby.html">Hobby</a>
+      <a href="cv.html">CV</a>
+    </div>
+    
+    <!-- Main layout --> 
+    <div class="main-content", style="width:100%;background:rgba(255,255,255,0.85);border-radius:12px;">
     <div class="carousel-container">
-    <img class="carousel-slide active" src="Norway/nor1.jpg" alt="Dancing Aurora">
-    <img class="carousel-slide" src="Norway/nor2.jpg" alt="Milky Way">
-    <img class="carousel-slide" src="Norway/nor3.jpg" alt="No (Sun)-rise">
-    <!-- Add more images as needed -->
+    <div class="carousel-slide active">
+        <img src="Norway/nor1.jpg" alt="Photo 1">
+    <div class="caption">Dancing Aurora</div>
   </div>
+  <div class="carousel-slide">
+    <img src="Norway/nor2.jpg" alt="Photo 2">
+    <div class="caption">Milky Way</div>
+  </div>
+  <div class="carousel-slide">
+    <img src="Norway/nor3.jpg" alt="Photo 3">
+    <div class="caption">No (Sun)-rise</div>
+  </div>
+</div>
   </div>
   <script>
     let index = 0;
