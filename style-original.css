@@ -277,8 +277,13 @@ body::before {
         opacity: 1;
     }
 
+    /* Same as desktop: the first screen shows only the photo,
+       and the content starts just below it.
+       svh = the visible screen height on phones (address bar included). */
     .main-content {
         flex-direction: column;
+        margin-top: 100vh;
+        margin-top: 100svh;
     }
 }
 
