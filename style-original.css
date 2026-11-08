@@ -268,6 +268,24 @@ body::before {
     padding: 0 0.3em;
 }
 
+/* Research Interests: deep blue heading, to set it apart from the
+   red publication headings below */
+.research-container .interests-title {
+    color: #1f5f99;
+}
+
+/* Research Interests line */
+.research-container .research-interests {
+    margin: 0.5em 0 0.4em;
+    font-size: 1em;
+}
+
+/* Lists without numbers (Industrial Collaborations) */
+.research-container ol.article-list.plain-list {
+    list-style: none;
+    margin-left: 0;
+}
+
 /* Google Scholar logo in a circle, next to the "Research" heading */
 .scholar-link {
     display: inline-flex;
