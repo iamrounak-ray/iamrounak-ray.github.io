@@ -262,6 +262,12 @@ body::before {
     color: #004080;
 }
 
+/* Opening paragraph on the Research page */
+.research-container .research-intro {
+    margin: 0 0 1.6em;
+    padding: 0 0.3em;
+}
+
 /* Google Scholar logo in a circle, next to the "Research" heading */
 .scholar-link {
     display: inline-flex;
