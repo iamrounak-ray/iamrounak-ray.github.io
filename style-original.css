@@ -247,6 +247,21 @@ body::before {
     text-underline-offset: 5px;
 }
 
+/* Research page: sections are always expanded (plain headings, no collapsing).
+   Same spacing and heading style as the earlier collapsible version. */
+.research-container .research-section {
+    margin-bottom: 14px;
+    padding: 0.1em 0.3em;
+    font-size: 1.07em;
+}
+.research-container .section-heading {
+    font-size: 1.10em;
+    font-weight: 600;
+    margin: 0;
+    padding: 0.16em 0;
+    color: #004080;
+}
+
 /* Google Scholar logo in a circle, next to the "Research" heading */
 .scholar-link {
     display: inline-flex;
