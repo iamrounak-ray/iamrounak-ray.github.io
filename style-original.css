@@ -241,6 +241,12 @@ body::before {
     pointer-events: none;
 }
 
+/* Underline the menu link of the page you are on (same as the Home page) */
+.top-right-links a[aria-current="page"] {
+    text-decoration: underline;
+    text-underline-offset: 5px;
+}
+
 /* Bigger invisible tap area around each menu link (no visual change) */
 .top-right-links a {
     position: relative;
