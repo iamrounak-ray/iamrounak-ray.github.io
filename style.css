@@ -1,176 +1,283 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    font-family: Comfortaa, Arial, sans-serif;
-    color: #232323;
+/* ==========================================================
+   Rounak Ray — site styles
+   Layouts: phone (<= 600px), tablet (601–1024px), desktop (> 1024px)
+   ========================================================== */
+
+:root {
+    --text: #232323;
+    --muted: #464646;
+    --accent: #d9534f;      /* "In short," and section titles */
+    --highlight: #ec327c;   /* pink keywords */
+    --link: #3f7d20;        /* darker green: readable on light backgrounds */
+    --link-hover: #2d5c16;
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --pane-bg: rgba(249, 249, 253, 0.85);
+    --header-h: 84px;       /* used to offset anchored scrolling */
+    --page-bg: url('welcome.jpg');
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
     overflow-x: hidden;
+    overflow-x: clip;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
 }
 
 body {
-    background: url('welcome.jpg') no-repeat center center fixed;
+    margin: 0;
+    min-height: 100%;
+    position: relative;
+    display: flow-root;   /* keeps the card's top margin inside the page (scroll arrow positioning) */
+    font-family: Comfortaa, Arial, sans-serif;
+    color: var(--text);
+    background: #1d2b44; /* shown only while the photo loads */
+}
+
+/* Full-screen background photo.
+   A fixed layer instead of `background-attachment: fixed`,
+   which iPhone/iPad Safari ignores (it stretched and blurred the photo). */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100lvh;
+    z-index: -1;
+    background: var(--page-bg) no-repeat center center;
     background-size: cover;
 }
 
-.site-title {
+.page-research { --page-bg: url('research.jpg'); }
+.page-hobby    { --page-bg: url('hobby.jpg'); }
+
+img {
+    max-width: 100%;
+}
+
+/* ---------- Header: name + menu ---------- */
+
+.site-header {
     position: fixed;
-    top: 25px;
-    left: 30px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 30px;
+    padding-left: max(30px, env(safe-area-inset-left));
+    padding-right: max(30px, env(safe-area-inset-right));
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Darkened, blurred bar once the page is scrolled, so text never runs under the menu */
+.site-header.scrolled {
+    background: rgba(17, 27, 46, 0.62);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+}
+
+.site-title {
     font-size: 2.4em;
     font-weight: 700;
     color: #e9f6ff;
+    text-decoration: none;
     text-shadow: 1px 1px 7px rgba(0, 0, 0, 0.65);
-    user-select: none;
-    z-index: 10;
     letter-spacing: 1px;
+    line-height: 1.2;
+    user-select: none;
 }
 
-.top-right-links {
-    position: fixed;
-    top: 25px;
-    right: 30px;
-    font-family: Comfortaa, Arial, sans-serif;
+.site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
     font-size: 1.1em;
-    color: #e9f6ff;
-    user-select: none;
-    z-index: 10;
     letter-spacing: 1px;
 }
 
-.top-right-links a {
+.site-nav a {
     color: #e9f6ff;
     text-decoration: none;
-    margin-left: 20px;
     font-weight: 700;
+    padding: 10px 12px;          /* ~44px tall: comfortable to tap */
+    border-radius: 8px;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.55);
 }
 
-.top-right-links a:hover {
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
     text-decoration: underline;
+    text-underline-offset: 5px;
 }
+
+.site-nav a:focus-visible,
+.site-title:focus-visible,
+.scroll-cue:focus-visible {
+    outline: 2px solid #e9f6ff;
+    outline-offset: 2px;
+}
+
+/* ---------- "Scroll down" arrow on the first screen ---------- */
+
+.scroll-cue {
+    position: absolute;
+    left: 50%;
+    top: calc(100vh - 76px);
+    top: calc(100svh - 76px);
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #e9f6ff;
+    background: rgba(17, 27, 46, 0.35);
+    border: 1px solid rgba(233, 246, 255, 0.5);
+    text-decoration: none;
+    z-index: 6;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-cue.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.scroll-cue svg {
+    width: 22px;
+    height: 22px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .scroll-cue svg { animation: cue-bob 2s ease-in-out infinite; }
+}
+
+@keyframes cue-bob {
+    0%, 100% { transform: translateY(-2px); }
+    50%      { transform: translateY(4px); }
+}
+
+/* ---------- Main card ---------- */
 
 .main-content {
     display: flex;
-    max-width: 1050px;
-    margin: 100vh auto 32px auto;
+    width: min(1050px, calc(100% - 48px));
+    margin: 100vh auto 32px;
+    margin-top: 100svh;
     background: url('home-back.jpg') no-repeat center center;
     background-size: cover;
     border-radius: 12px;
     box-shadow: 0 4px 22px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.03);
-    padding: 0;
     min-height: 380px;
     position: relative;
     z-index: 5;
-    box-sizing: border-box;
+    scroll-margin-top: var(--header-h);
 }
 
-.highlight {
-    font-size: 1.1em;
-    color: #ec327c;
-    font-weight: 600;
+/* Research and Hobby pages: plain translucent card */
+.main-content.card-plain {
+    display: block;
+    background: var(--card-bg);
 }
 
 .left-pane {
-    width: 25%;
+    flex: 0 0 25%;
     min-width: 180px;
-    background: rgba(249, 249, 253, 0.85);
+    background: var(--pane-bg);
     border-right: 1px solid #e2e7ef;
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 54px;
+    padding: 54px 12px 24px;
     border-radius: 12px 0 0 12px;
 }
 
 .profile-photo {
     width: 208px;
-    height: 208px;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 50%;
 }
 
 .right-pane {
-    width: 75%;
-    padding: 46px 34px 38px 34px;
-    background: rgba(255, 255, 255, 0.85);
+    flex: 1 1 auto;
+    min-width: 0;
+    padding: 46px 34px 38px;
+    background: var(--card-bg);
     border-radius: 0 12px 12px 0;
     overflow-wrap: break-word;
-    box-sizing: border-box;
+}
+
+.intro-heading {
+    font-size: 1.75em;
+    color: var(--accent);
 }
 
 p {
     font-size: 1.13em;
     line-height: 1.7em;
-    margin-bottom: 1.4em;
+    margin: 0 0 1.4em;
+}
+
+.highlight {
+    font-size: 1.1em;
+    color: var(--highlight);
+    font-weight: 600;
 }
 
 .link {
-    color: #93C572;
+    color: var(--link);
     font-size: 1.1em;
     font-weight: 600;
     text-decoration: none;
 }
 
 .link:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+a.highlight:hover {
     text-decoration: underline;
 }
 
 .footer {
     text-align: center;
-    color: #464646;
+    color: var(--muted);
     font-size: 1em;
-    margin: 25px 0 0 0;
+    margin: 25px 0 0;
 }
 
-@media(max-width: 800px) {
-    .main-content {
-        flex-direction: column;
-        max-width: 98vw;
-        margin-top: 440px;
-        background: none;
-        box-shadow: none;
-        border-radius: 0;
-    }
-    .left-pane, .right-pane {
-        width: 100%;
-        min-width: 0;
-        max-width: 100vw;
-        padding-top: 18px;
-        padding-left: 0;
-        padding-right: 0;
-        border-radius: 0;
-        background: none;
-    }
-    .right-pane {
-        padding: 18px 10px 26px 10px;
-    }
-    .profile-photo {
-        margin-top: 100px;
-        width: 110px;
-        height: 110px;
-    }
-    .site-title {
-        font-size: 1.6em;
-        left: 12px;
-        top: 12px;
-    }
+.page-heading {
+    margin: 0 0 0.6em;
+    padding-left: 10px;
+    font-size: 2em;
 }
 
-/* research page container with opaque background */
+/* ---------- Research page ---------- */
+
 .research-container {
-    width: 85vw;
-    max-width: 85vw;
-    margin: 32px auto;
-    padding: 1.5rem 2rem;
-    border-radius: 12px;
-    box-sizing: border-box;
+    padding: 2rem 2.5rem 2.5rem;
 }
 
 .research-container details {
-    background: none;
-    border-radius: 0;
     margin-bottom: 14px;
-    box-shadow: none;
     padding: 0.1em 0.3em;
     font-size: 1.07em;
 }
@@ -178,25 +285,249 @@ p {
 .research-container summary {
     cursor: pointer;
     font-weight: 600;
-    font-size: 1.10em;
-    padding: 0.16em 0;
+    padding: 0.5em 0;           /* bigger tap area */
     color: #004080;
-    outline: none;
+    line-height: 1.4;
 }
 
-.research-container details[open] {
-    background: transparent;
+.section-title {
+    font-size: 1.25em;
+    color: var(--accent);
 }
 
 .research-container ol.article-list {
     margin: 0.7em 0 0 1.3em;
     padding: 0;
+    line-height: 1.6;
 }
 
 .research-container ol.article-list li {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.9em;
+    overflow-wrap: break-word;
 }
 
-h1 {
-  padding-left: 10px; /* Adds space inside the element before the text */
+/* ---------- Hobby page: photo gallery ---------- */
+
+.hobby-container {
+    padding: 2rem 2.5rem 2.5rem;
+}
+
+.gallery {
+    position: relative;
+    width: min(100%, 780px, calc((100svh - 220px) * 1.5));
+    margin: 0 auto;
+}
+
+.gallery-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    border-radius: 10px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.gallery-track::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-slide {
+    flex: 0 0 100%;
+    margin: 0;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+.gallery-slide img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    object-fit: cover;
+    border-radius: 10px;
+    background: #1d2b44;
+}
+
+.caption {
+    font-size: 1em;
+    padding: 10px 0 4px;
+    color: #333;
+    text-align: center;
+}
+
+/* Overlay the exact size of the photo, so the arrows sit at its vertical centre */
+.gallery-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    aspect-ratio: 3 / 2;
+    pointer-events: none;
+}
+
+.gallery-btn {
+    position: absolute;
+    top: calc(50% - 22px);
+    pointer-events: auto;
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(17, 27, 46, 0.55);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.gallery-btn:hover { background: rgba(17, 27, 46, 0.8); }
+.gallery-btn:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.gallery-btn svg { width: 20px; height: 20px; }
+.gallery-btn.prev { left: 10px; }
+.gallery-btn.next { right: 10px; }
+
+.gallery-dots {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+    margin-top: 4px;
+}
+
+.gallery-dots button {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.gallery-dots button::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #b9b9c4;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.gallery-dots button[aria-current="true"]::before {
+    background: var(--highlight);
+    transform: scale(1.25);
+}
+
+/* ==========================================================
+   Tablet: 601px – 1024px
+   ========================================================== */
+@media (max-width: 1024px) {
+    .site-header {
+        padding: 14px 20px;
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+    }
+    .site-title { font-size: 2em; }
+    .site-nav   { font-size: 1em; }
+
+    .main-content { width: calc(100% - 40px); }
+
+    .left-pane {
+        flex: 0 0 190px;
+        min-width: 0;
+        padding: 40px 16px 24px;
+    }
+    .profile-photo { width: 150px; }
+
+    .right-pane { padding: 36px 28px 30px; }
+
+    p { font-size: 1.08em; }
+
+    .research-container,
+    .hobby-container { padding: 1.75rem 2rem 2rem; }
+}
+
+/* ==========================================================
+   Phone: up to 600px
+   ========================================================== */
+@media (max-width: 600px) {
+    :root { --header-h: 96px; }
+
+    /* Name on top, menu underneath */
+    .site-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+        padding: 10px 12px 4px;
+        padding-left: max(12px, env(safe-area-inset-left));
+        padding-right: max(12px, env(safe-area-inset-right));
+    }
+    .site-title {
+        font-size: 1.45em;
+        letter-spacing: 0.5px;
+    }
+    .site-nav {
+        width: 100%;
+        gap: 0;
+        font-size: 0.95em;
+        letter-spacing: 0.5px;
+        margin-left: -10px;
+    }
+    .site-nav a { padding: 10px 10px; }
+
+    .main-content {
+        flex-direction: column;
+        width: calc(100% - 24px);
+        margin-bottom: 20px;
+    }
+
+    .left-pane {
+        flex: none;
+        border-right: none;
+        border-bottom: 1px solid #e2e7ef;
+        padding: 24px 16px 16px;
+        border-radius: 12px 12px 0 0;
+    }
+    .profile-photo { width: 140px; }
+
+    .right-pane {
+        padding: 20px 18px 24px;
+        border-radius: 0 0 12px 12px;
+    }
+
+    .intro-heading { font-size: 1.55em; }
+    p {
+        font-size: 1.02em;
+        line-height: 1.65em;
+        margin-bottom: 1.2em;
+    }
+
+    .page-heading {
+        font-size: 1.6em;
+        padding-left: 0;
+    }
+
+    .research-container,
+    .hobby-container { padding: 1.25rem 1rem 1.5rem; }
+
+    .research-container details { padding: 0; }
+    .section-title { font-size: 1.12em; }
+    .research-container ol.article-list { margin-left: 1.2em; }
+
+    .gallery { width: 100%; }
+    .gallery-btn {
+        width: 38px;
+        height: 38px;
+        top: calc(50% - 19px);
+    }
+    .gallery-btn.prev { left: 6px; }
+    .gallery-btn.next { right: 6px; }
+}
+
+/* Short, wide screens (phones held sideways): keep the photo on screen */
+@media (max-height: 500px) and (orientation: landscape) {
+    .site-header { padding-top: 8px; padding-bottom: 8px; }
+    .site-title { font-size: 1.6em; }
+    .gallery { width: min(100%, calc((100svh - 150px) * 1.5)); }
 }

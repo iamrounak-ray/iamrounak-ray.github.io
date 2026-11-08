@@ -2,29 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Rounak Ray</title>
+  <meta name="description" content="Rounak Ray — postdoctoral research fellow in probability at the Division of Applied Mathematics, Brown University." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
+  <script src="site.js" defer></script>
 </head>
-<body>
-  <div class="site-title">Rounak Ray (রৌণক রায়)</div>
-  <div class="top-right-links">
-    <a href="index.html">Home</a>
-    <a href="research.html">Research</a>
-    <a href="hobby.html">Hobby</a>
-    <a href="CV-Rounak.pdf">CV</a>
-  </div>
+<body class="page-home">
+  <header class="site-header">
+    <a class="site-title" href="index.html">Rounak Ray (রৌণক রায়)</a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="research.html">Research</a>
+      <a href="hobby.html">Hobby</a>
+      <a href="CV-Rounak.pdf">CV</a>
+    </nav>
+  </header>
+
+  <a class="scroll-cue" href="#content" aria-label="Scroll down to content">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
 
   <!-- Main split layout -->
-  <div class="main-content">
+  <main class="main-content" id="content">
     <div class="left-pane">
-      <img src="dp1.jpg" alt="Profile photo" class="profile-photo">
+      <img src="dp1.jpg" alt="Photo of Rounak Ray" class="profile-photo" width="208" height="208">
     </div>
     <div class="right-pane">
       <p>
-        <span style="font-size: 1.75em; color: #d9534f;">In short,</span>
+        <span class="intro-heading">In short,</span>
       </p>
       <p>
         I am currently a postdoctoral research fellow at the <a href="https://appliedmath.brown.edu" class="link" target="_blank" rel="noreferrer noopener">Division of Applied Mathematics, Brown University</a>, in the group of <a href="https://sites.google.com/brown.edu/kavita-ramanan/about" class="link" target="_blank" rel="noreferrer noopener">Prof. Kavita Ramanan</a>. Prior to this, I completed my PhD in Probability theory from <a href="https://www.tue.nl/en/" class="link" target="_blank" rel="noreferrer noopener">Eindhoven University of Technology</a>, under the supervision of <a href="https://rhofstad.win.tue.nl" class="link" target="_blank" rel="noreferrer noopener">Prof. Remco van der Hofstad</a> and <a href="https://sites.google.com/site/rshazra/" class="link" target="_blank" rel="noreferrer noopener">Dr. Rajat Subhra Hazra</a>. My doctoral thesis is titled <a href="https://research.tue.nl/en/publications/stochastic-processes-on-preferential-attachment-models-understand" class="link" target="_blank" rel="noreferrer noopener">"Stochastic Processes on Preferential Attachment Models"</a>.
@@ -33,12 +42,12 @@
         I am working on <span class="highlight">Interacting particle systems on random graphs</span>. Besides this, my area of interests are <span class="highlight">Stochastic process, Interacting particle systems, Random interfaces, Random walks, Statistical physics</span>.
       </p>
       <p>
-        Here is something other than my academics. I love to play <span class="highlight">table tennis, chess, football</span> (though I am terribly bad at this).  I like to read <span class="highlight">comics</span> and bengali <span class="highlight">storybooks</span>. And I love <span class="highlight">travelling</span>. I want to see the whole world. I am a <span class="highlight">foodie</span> also. I like to taste the special food items of every place I visit. 
+        Here is something other than my academics. I love to play <span class="highlight">table tennis, chess, football</span> (though I am terribly bad at this).  I like to read <span class="highlight">comics</span> and bengali <span class="highlight">storybooks</span>. And I love <span class="highlight">travelling</span>. I want to see the whole world. I am a <span class="highlight">foodie</span> also. I like to taste the special food items of every place I visit.
       </p>
-      <div class="footer">
+      <footer class="footer">
         &copy; 2025 Rounak Ray
-      </div>
+      </footer>
     </div>
-  </div>
+  </main>
 </body>
 </html>

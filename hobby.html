@@ -2,103 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Rounak Ray</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Hobby · Rounak Ray</title>
+  <meta name="description" content="Travel photos by Rounak Ray: a trip to Norway." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&display=swap" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-        background: url('hobby.jpg') no-repeat center center fixed;
-        background-size: cover;
-    }
-   .carousel-container {
-      width: 600px;
-      padding-top: 80px; /* or any value you want */
-      position: relative;
-    }
-
-    .carousel-slide {
-      display: none;
-      height: 500px;           /* Fixed height */
-      width: 100%;
-      object-fit: cover;
-      object-position: center;
-      text-align: center;      /* Center caption text */
-    }
-
-    .carousel-slide.active {
-      display: block;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 450px;           /* Adjust height for image */
-      width: auto;         /* Width auto to keep aspect ratio */
-      object-fit: contain; /* Keep full image in view, no cropping */
-      object-position: center;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .caption {
-      font-size: 1em;
-      padding: 8px 0;
-      color: #333;
-    }
-</style>
+  <script src="site.js" defer></script>
 </head>
-  <body>
-    <div class="site-title">Rounak Ray</div>
-    <div class="top-right-links">
+<body class="page-hobby">
+  <header class="site-header">
+    <a class="site-title" href="index.html">Rounak Ray</a>
+    <nav class="site-nav" aria-label="Main">
       <a href="index.html">Home</a>
       <a href="research.html">Research</a>
-      <a href="hobby.html">Hobby</a>
-      <a href="CV.pdf">CV</a>
+      <a href="hobby.html" aria-current="page">Hobby</a>
+      <a href="CV-Rounak.pdf">CV</a>
+    </nav>
+  </header>
+
+  <a class="scroll-cue" href="#content" aria-label="Scroll down to content">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+  </a>
+
+  <main class="main-content card-plain" id="content">
+    <div class="hobby-container">
+      <h1 class="page-heading"><span class="highlight">Norway Trip</span></h1>
+
+      <!-- Photo gallery: swipe on phones/tablets, arrows or keyboard on desktop -->
+      <section class="gallery" aria-roledescription="carousel" aria-label="Norway trip photos">
+        <div class="gallery-track" tabindex="0">
+          <figure class="gallery-slide" aria-roledescription="slide" aria-label="1 of 5">
+            <img src="Norway/nor1.jpg" alt="Green aurora borealis over a dark mountain" width="1800" height="1200">
+            <figcaption class="caption">Dancing Aurora</figcaption>
+          </figure>
+          <figure class="gallery-slide" aria-roledescription="slide" aria-label="2 of 5">
+            <img src="Norway/nor4.jpg" alt="Norwegian fjord" width="1800" height="1200" loading="lazy">
+            <figcaption class="caption">Fjords</figcaption>
+          </figure>
+          <figure class="gallery-slide" aria-roledescription="slide" aria-label="3 of 5">
+            <img src="Norway/nor3.jpg" alt="Polar night sky where the sun does not rise" width="1800" height="1200" loading="lazy">
+            <figcaption class="caption">No (Sun)-rise</figcaption>
+          </figure>
+          <figure class="gallery-slide" aria-roledescription="slide" aria-label="4 of 5">
+            <img src="Norway/nor5.jpg" alt="Calm sea stretching to the horizon" width="1800" height="1200" loading="lazy">
+            <figcaption class="caption">Peace, vast sea beyond</figcaption>
+          </figure>
+          <figure class="gallery-slide" aria-roledescription="slide" aria-label="5 of 5">
+            <img src="Norway/nor6.jpg" alt="Snow-covered landscape seen from above" width="1800" height="1200" loading="lazy">
+            <figcaption class="caption">Snowy vista, bird's perspective serene</figcaption>
+          </figure>
+        </div>
+
+        <div class="gallery-frame">
+          <button class="gallery-btn prev" type="button" aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg>
+          </button>
+          <button class="gallery-btn next" type="button" aria-label="Next photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+          </button>
+        </div>
+
+        <div class="gallery-dots" role="group" aria-label="Choose photo"></div>
+      </section>
     </div>
-    
-    <!-- Main layout --> 
-    <div class="main-content", style="width:100%;background:rgba(255,255,255,0.85);border-radius:12px;">
-    <p>
-        <h1><span class="highlight">Norway Trip</span></h1>
-    </p> 
-    <div class="carousel-container">
-    <div class="carousel-slide active">
-        <img src="Norway/nor1.jpg" alt="Photo 1">
-    <div class="caption">Dancing Aurora</div>
-  </div>
-  <div class="carousel-slide">
-    <img src="Norway/nor4.jpg" alt="Photo 2">
-    <div class="caption">Fjords</div>
-  </div>
-  <div class="carousel-slide">
-    <img src="Norway/nor3.jpg" alt="Photo 3">
-    <div class="caption">No (Sun)-rise</div>
-  </div>
-  <div class="carousel-slide">
-    <img src="Norway/nor5.jpg" alt="Photo 3">
-    <div class="caption">Peace, vast sea beyond</div>
-  </div>
-  <div class="carousel-slide">
-    <img src="Norway/nor6.jpg" alt="Photo 3">
-    <div class="caption">Snowy vista, bird's perspective seren</div>
-  </div>
-    </div>
-  </div>
-  <script>
-    let index = 0;
-    const slides = document.querySelectorAll('.carousel-slide');
-    function showSlide(i) {
-      slides.forEach((slide, idx) => {
-        slide.classList.remove('active');
-        if (idx === i) slide.classList.add('active');
-      });
-    }
-    function nextSlide() {
-      index = (index + 1) % slides.length;
-      showSlide(index);
-    }
-    setInterval(nextSlide, 7500); // Change every 7.5 seconds
-  </script>
-  </body>
+  </main>
+</body>
 </html>
