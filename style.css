@@ -235,6 +235,18 @@ p {
     margin: 0 0 1.4em;
 }
 
+/* Home page text: justified so each line fills the full width. */
+.right-pane p {
+    text-align: justify;
+}
+/* On narrow phone screens, allow hyphenation so word spacing stays even */
+@media (max-width: 600px) {
+    .right-pane p {
+        -webkit-hyphens: auto;
+        hyphens: auto;
+    }
+}
+
 .highlight {
     font-size: 1.1em;
     color: var(--highlight);
