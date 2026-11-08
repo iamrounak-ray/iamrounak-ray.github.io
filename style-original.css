@@ -247,6 +247,39 @@ body::before {
     text-underline-offset: 5px;
 }
 
+/* Google Scholar logo in a circle, next to the "Research" heading */
+.scholar-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.3em;
+    height: 1.3em;
+    margin-left: 0.15em;
+    vertical-align: middle;
+    position: relative;
+    top: -0.06em;
+    border-radius: 50%;
+    background: #4285f4;
+    color: #fff;
+    font-size: 1em;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.scholar-link .ai {
+    font-size: 0.9em;
+    line-height: 1;
+}
+.scholar-link:hover {
+    background: #3367d6;
+    transform: translateY(-1px) scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+.scholar-link:focus-visible {
+    outline: 2px solid #004080;
+    outline-offset: 3px;
+}
+
 /* Bigger invisible tap area around each menu link (no visual change) */
 .top-right-links a {
     position: relative;
