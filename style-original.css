@@ -268,9 +268,9 @@ body::before {
     padding: 0 0.3em;
 }
 
-/* Research Interests: deep blue heading, to set it apart from the
-   red publication headings below */
-.research-container .interests-title {
+/* Section headings on the Research page (Research Interests, Preprints,
+   Published & Accepted Articles, Industrial Collaborations): deep blue */
+.research-container .section-title {
     color: #1f5f99;
 }
 
