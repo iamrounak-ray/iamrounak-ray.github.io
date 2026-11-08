@@ -254,29 +254,86 @@ body::before {
     right: -9px;
 }
 
+/* Header band: invisible at the top of the page, darkens once you
+   scroll (same look as the Home page), so page text never runs
+   underneath the name and menu. */
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 94px;
+    background: rgba(17, 27, 46, 0.62);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 14px rgba(0, 0, 0, 0.18);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 9;
+    pointer-events: none;
+}
+html.scrolled body::after {
+    opacity: 1;
+}
+
+/* Smooth scrolling when the arrow is clicked */
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+}
+.main-content {
+    scroll-margin-top: 94px;   /* stop just below the header band */
+}
+
+/* "Scroll down" arrow in a circle at the bottom of the first screen
+   (same as the Home page). It fades out once you scroll. */
+.scroll-cue {
+    position: absolute;
+    left: 50%;
+    top: calc(100vh - 76px);
+    top: calc(100svh - 76px);
+    transform: translateX(-50%);
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #e9f6ff;
+    background: rgba(17, 27, 46, 0.35);
+    border: 1px solid rgba(233, 246, 255, 0.5);
+    text-decoration: none;
+    z-index: 6;
+    transition: opacity 0.3s ease;
+    box-sizing: border-box;
+}
+.scroll-cue svg {
+    width: 22px;
+    height: 22px;
+}
+@media (prefers-reduced-motion: no-preference) {
+    .scroll-cue svg { animation: cue-bob 2s ease-in-out infinite; }
+}
+@keyframes cue-bob {
+    0%, 100% { transform: translateY(-2px); }
+    50%      { transform: translateY(4px); }
+}
+.scroll-cue:focus-visible {
+    outline: 2px solid #e9f6ff;
+    outline-offset: 2px;
+}
+html.scrolled .scroll-cue {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Smaller tablets and large phones: the name is smaller here, so the band is shorter */
+@media (max-width: 800px) {
+    body::after { height: 66px; }
+    .main-content { scroll-margin-top: 66px; }
+}
+
 /* Tablets and phones */
 @media (max-width: 1024px) {
-    /* Darkened strip behind the name and menu once the page is scrolled,
-       so page text never runs underneath them. Invisible at the top. */
-    body::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 84px;
-        background: rgba(17, 27, 46, 0.6);
-        -webkit-backdrop-filter: blur(8px);
-        backdrop-filter: blur(8px);
-        opacity: 0;
-        transition: opacity 0.25s ease;
-        z-index: 9;
-        pointer-events: none;
-    }
-    html.scrolled body::after {
-        opacity: 1;
-    }
-
     /* Same as desktop: the first screen shows only the photo,
        and the content starts just below it.
        svh = the visible screen height on phones (address bar included). */
@@ -297,6 +354,9 @@ body::before {
 @media (max-width: 600px) {
     body::after {
         height: 92px;
+    }
+    .main-content {
+        scroll-margin-top: 92px;
     }
 
     .site-title {
