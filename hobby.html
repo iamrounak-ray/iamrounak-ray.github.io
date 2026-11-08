@@ -46,6 +46,32 @@
       padding: 8px 0;
       color: #333;
     }
+
+    /* Tablets and phones: heading above the photo, photo shrinks to fit the screen */
+    @media (max-width: 1024px) {
+      .carousel-container {
+        width: 100%;
+        max-width: 675px;
+        margin: 0 auto;
+        padding: 0 10px 16px;
+        box-sizing: border-box;
+      }
+      .carousel-slide {
+        height: auto;
+      }
+      .carousel-slide img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 2;
+      }
+    }
+
+    /* Phones held sideways: keep the whole photo on screen */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .carousel-container {
+        max-width: calc((100vh - 70px) * 1.5);
+      }
+    }
 </style>
 </head>
   <body>
@@ -98,7 +124,32 @@
       index = (index + 1) % slides.length;
       showSlide(index);
     }
-    setInterval(nextSlide, 7500); // Change every 7.5 seconds
+    let timer = setInterval(nextSlide, 7500); // Change every 7.5 seconds
+
+    // Swipe left/right on phones and tablets to change photo
+    let startX = null, startY = null;
+    const carousel = document.querySelector('.carousel-container');
+    carousel.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX; startY = e.touches[0].clientY;
+    }, { passive: true });
+    carousel.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      const dy = e.changedTouches[0].clientY - startY;
+      startX = null;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+      index = (index + (dx < 0 ? 1 : -1) + slides.length) % slides.length;
+      showSlide(index);
+      clearInterval(timer);
+      timer = setInterval(nextSlide, 7500);
+    }, { passive: true });
+
+    // Darken the strip behind the name/menu once scrolled (phones and tablets only)
+    (function () {
+      function update() { document.documentElement.classList.toggle('scrolled', window.scrollY > 40); }
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+    })();
   </script>
   </body>
 </html>

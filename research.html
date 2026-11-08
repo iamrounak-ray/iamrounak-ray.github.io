@@ -53,5 +53,13 @@
             </div>
       </div>
   </div>
+  <script>
+    // Darken the strip behind the name/menu once scrolled (phones and tablets only)
+    (function () {
+      function update() { document.documentElement.classList.toggle('scrolled', window.scrollY > 40); }
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+    })();
+  </script>
 </body>
 </html>
